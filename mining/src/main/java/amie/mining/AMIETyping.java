@@ -1,22 +1,13 @@
 package amie.mining;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
 import java.util.Set;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
 
 
 import javatools.datatypes.MultiMap;
-import amie.data.KB;
-import amie.mining.AMIE.RDFMinerJob;
 import amie.mining.assistant.experimental.TypingMiningAssistant;
 import amie.rules.Metric;
 import amie.rules.Rule;

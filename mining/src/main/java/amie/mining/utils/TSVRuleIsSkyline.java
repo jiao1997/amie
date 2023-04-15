@@ -7,7 +7,6 @@ package amie.mining.utils;
 
 import amie.data.KB;
 import amie.mining.AMIE;
-import amie.mining.assistant.DefaultMiningAssistant;
 import amie.mining.assistant.MiningAssistant;
 import amie.rules.AMIEParser;
 import amie.rules.Rule;

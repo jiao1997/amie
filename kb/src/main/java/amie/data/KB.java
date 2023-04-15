@@ -3,10 +3,12 @@ package amie.data;
 import static amie.data.U.decrease;
 import static amie.data.U.decreasingKeys;
 import static amie.data.U.increase;
+
 import amie.data.starpattern.SignedPredicate;
 import amie.data.tuple.IntArrays;
 import amie.data.tuple.IntPair;
 import amie.data.tuple.IntTriple;
+import amie.data.utils.ParseInputFiles;
 import it.unimi.dsi.fastutil.ints.Int2IntMap;
 import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
@@ -892,19 +894,26 @@ public class KB {
 					+ NumberFormatter.formatMS(System.currentTimeMillis()
 							- time));
 		}
-		for (String line : new FileLines(f, "UTF-8", message)) {
-			if (line.endsWith("."))
-				line = Char17.cutLast(line);
-                        String[] split = line.trim().split(delimiter);
-			if (split.length == 3) {
-				add(split[0].trim(), split[1].trim(), split[2].trim());
-			} else if (split.length == 4)
-				add(split[1].trim(), split[2].trim(), split[3].trim());
+		if (f.getPath().endsWith(".ttl") || f.getPath().endsWith(".nt")) {
+			List<String[]> lines = ParseInputFiles.parseTTLOrNTFile(f.getPath());
+			for (String[] line : lines) {
+				add(line[0].trim(), line[1].trim(), line[2].trim());
+			}
+		} else {
+			for (String line : new FileLines(f, "UTF-8", message)) {
+				if (line.endsWith("."))
+					line = Char17.cutLast(line);
+				String[] split = line.trim().split(delimiter);
+				if (split.length == 3) {
+					add(split[0].trim(), split[1].trim(), split[2].trim());
+				} else if (split.length == 4)
+					add(split[1].trim(), split[2].trim(), split[3].trim());
 			/*String[] split = line.trim().split(">" + delimiter);
 			if (split.length == 3) {
 				add(split[0].trim() +">", split[1].trim()+">", split[2].trim());
 			} else if (split.length == 4)
 				add(split[0].trim() +">", split[1].trim()+">", split[2].trim()+">");*/
+			}
 		}
 
 		if (message != null)

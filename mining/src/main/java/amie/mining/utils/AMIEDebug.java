@@ -4,7 +4,6 @@
  */
 package amie.mining.utils;
 
-import amie.mining.*;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Constructor;
@@ -52,7 +51,6 @@ import java.util.HashSet;
 import javatools.administrative.Announce;
 
 import javatools.datatypes.MultiMap;
-import javatools.datatypes.Pair;
 import javatools.parsers.NumberFormatter;
 
 /**

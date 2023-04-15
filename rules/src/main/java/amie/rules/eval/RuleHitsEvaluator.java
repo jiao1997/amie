@@ -12,7 +12,6 @@ import amie.data.KB;
 import amie.data.tuple.IntTriple;
 import amie.rules.AMIEParser;
 import amie.rules.Rule;
-import it.unimi.dsi.fastutil.ints.Int2IntMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.IntSet;
 

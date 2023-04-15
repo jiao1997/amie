@@ -12,6 +12,7 @@
     <module>typing</module>
     <module>rosa</module>
     <module>rules</module>
+    <module>javatools</module>
   </modules>
 
   <properties>

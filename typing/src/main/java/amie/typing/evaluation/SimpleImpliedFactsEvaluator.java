@@ -11,8 +11,7 @@ import amie.data.SetU;
 import amie.data.SimpleTypingKB;
 import amie.data.WikidataSimpleTypingKB;
 import static amie.typing.classifier.SeparationClassifier.getOptions;
-import static amie.typing.evaluation.ImpliedFactsEvaluator.extractQueryArgs;
-import static amie.typing.evaluation.ImpliedFactsEvaluator.readClassFile;
+
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
