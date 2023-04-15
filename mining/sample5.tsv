@@ -1,0 +1,15 @@
+<http://ensembl.org/id/C>	<https://w3id.org/biolink/vocab/interacts_with>	<http://ensembl.org/id/P>
+<http://ensembl.org/id/C>	<https://w3id.org/biolink/vocab/interacts_with>	<http://ensembl.org/id/A>
+<http://ensembl.org/id/C>	<https://w3id.org/biolink/vocab/interacts_with>	<http://ensembl.org/id/B>
+<http://ensembl.org/id/D>	<https://w3id.org/biolink/vocab/interacts_with>	<http://ensembl.org/id/P>
+<http://ensembl.org/id/D>	<https://w3id.org/biolink/vocab/interacts_with>	<http://ensembl.org/id/A>
+<http://ensembl.org/id/D>	<https://w3id.org/biolink/vocab/interacts_with>	<http://ensembl.org/id/B>
+<http://ensembl.org/id/E>	<https://w3id.org/biolink/vocab/interacts_with>	<http://ensembl.org/id/P>
+<http://ensembl.org/id/E>	<https://w3id.org/biolink/vocab/interacts_with>	<http://ensembl.org/id/A>
+<http://ensembl.org/id/E>	<https://w3id.org/biolink/vocab/interacts_with>	<http://ensembl.org/id/B>
+<http://ensembl.org/id/Cx>	<https://w3id.org/biolink/vocab/interacts_with>	<http://ensembl.org/id/Px>
+<http://ensembl.org/id/Cx>	<https://w3id.org/biolink/vocab/interacts_with>	<http://ensembl.org/id/Ax>
+<http://ensembl.org/id/Cx>	<https://w3id.org/biolink/vocab/interacts_with>	<http://ensembl.org/id/Bx>
+<http://ensembl.org/id/Dx>	<https://w3id.org/biolink/vocab/interacts_with>	<http://ensembl.org/id/Ax>
+<http://ensembl.org/id/Dx>	<https://w3id.org/biolink/vocab/interacts_with>	<http://ensembl.org/id/Bx>
+<http://ensembl.org/id/Dx>	<https://w3id.org/biolink/vocab/interacts_with>	<http://ensembl.org/id/Px>
