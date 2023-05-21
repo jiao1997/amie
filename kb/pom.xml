@@ -43,6 +43,11 @@
       <version>2.3.3</version>
     </dependency>
     <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-base</artifactId>
+      <version>11</version>
+    </dependency>
+    <dependency>
       <groupId>fr.enst.dbweb</groupId>
       <artifactId>javatools</artifactId>
       <version>1.0</version>

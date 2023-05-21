@@ -47,7 +47,7 @@ import javatools.administrative.Announce;
 import javatools.datatypes.ByteString;
 
 import javatools.datatypes.IntHashMap;
-import javatools.datatypes.Pair;
+import javafx.util.Pair;
 import javatools.filehandlers.FileLines;
 import javatools.parsers.Char17;
 import javatools.parsers.NumberFormatter;
@@ -687,7 +687,6 @@ public class KB {
                 db.subject2subjectOverlap.put(r1, new Int2IntOpenHashMap());
                 db.subject2objectOverlap.put(r1, new Int2IntOpenHashMap());
                 db.object2objectOverlap.put(r1, new Int2IntOpenHashMap());
-
                 for (int r2 : db.relationSize.keySet()) {
 
                     if (r1 < r2) {
@@ -779,16 +778,16 @@ public class KB {
                 synchronized(queue) {
                     q = queue.pollFirst();
                 }
-                if (q == null || q.first == null) {
+                if (q == null || q.getKey() == null) {
                     break;
                 }
 
-                if (q.first.equals(q.second)) {
-                    overlap = db.getMap(q.first).keySet().size();
+                if (q.getKey().equals(q.getValue())) {
+                    overlap = db.getMap(q.getKey()).keySet().size();
                 } else {
-                    overlap = (int) SetU.countIntersection(db.getMap(q.first).keySet(), db.getMap(q.second).keySet());
+                    overlap = (int) SetU.countIntersection(db.getMap(q.getKey()).keySet(), db.getMap(q.getValue()).keySet());
                 }
-                set(db, q.first, q.second, overlap);
+                set(db, q.getKey(), q.getValue(), overlap);
             }
         }
     }
@@ -893,7 +892,7 @@ public class KB {
 		}
 		if (f.getPath().endsWith(".ttl") || f.getPath().endsWith(".nt")) {
 			try {
-				InputStream in = FileManager.get().open(f.getPath());
+				InputStream in = new FileInputStream(f.getPath());
 				if (in == null) {
 					throw new IllegalArgumentException("File: " + f.getPath() + " not found");
 				}
@@ -4470,7 +4469,6 @@ public class KB {
 	/**
 	 * Returns the maximal number of values an entity can have for the given relation.
 	 * @param relation
-	 * @param threshold
 	 * @return
 	 */
 	public int maximalCardinality(int relation) {
@@ -4483,7 +4481,7 @@ public class KB {
 	 * Returns the maximal number of values smaller than limit than
 	 * an entity can have for the given relation.
 	 * @param relation
-	 * @param threshold
+	 * @param limit
 	 * @return
 	 */
 	public int maximalCardinality(int relation, int limit) {

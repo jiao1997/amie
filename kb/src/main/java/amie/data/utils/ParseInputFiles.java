@@ -65,7 +65,7 @@ public class ParseInputFiles {
         return resultList;
     }
 
-    public static void main(String argsp[]) {
+    public static void main(String args[]) {
         try {
             FileInputStream fileInputStream = new FileInputStream("D:\\amie\\sample5.tsv");
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(fileInputStream));
@@ -77,8 +77,6 @@ public class ParseInputFiles {
         } catch (Exception e) {
             log.error("");
         }
-
-
     }
     public static List<String[]> parseTTLOrNTFileInLine(String filePath) {
         List<String[]> resultList = new ArrayList<>();

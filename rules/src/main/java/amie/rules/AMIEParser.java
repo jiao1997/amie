@@ -10,7 +10,7 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
 
-import javatools.datatypes.Pair;
+import javafx.util.Pair;
 import javatools.filehandlers.TSVFile;
 
 /**
@@ -29,7 +29,7 @@ public class AMIEParser {
     public static Rule rule(String s) {
         Pair<List<int[]>, int[]> rulePair = KB.rule(s);
         if (rulePair == null) return null;
-        Rule resultRule = new Rule(rulePair.second, rulePair.first, 0);
+        Rule resultRule = new Rule(rulePair.getValue(), rulePair.getKey(), 0);
         return resultRule;
     }
 
