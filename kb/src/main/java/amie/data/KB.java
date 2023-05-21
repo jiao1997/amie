@@ -3,12 +3,14 @@ package amie.data;
 import static amie.data.U.decrease;
 import static amie.data.U.decreasingKeys;
 import static amie.data.U.increase;
+import static com.hp.hpl.jena.sparql.engine.optimizer.reorder.ReorderTransformationBase.log;
 
 import amie.data.starpattern.SignedPredicate;
 import amie.data.tuple.IntArrays;
 import amie.data.tuple.IntPair;
 import amie.data.tuple.IntTriple;
 import amie.data.utils.ParseInputFiles;
+import com.hp.hpl.jena.util.FileManager;
 import it.unimi.dsi.fastutil.ints.Int2IntMap;
 import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
@@ -23,13 +25,8 @@ import it.unimi.dsi.fastutil.ints.IntSet;
 import it.unimi.dsi.fastutil.ints.IntSets;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.io.Closeable;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.PrintStream;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
+
+import java.io.*;
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -895,9 +892,18 @@ public class KB {
 							- time));
 		}
 		if (f.getPath().endsWith(".ttl") || f.getPath().endsWith(".nt")) {
-			List<String[]> lines = ParseInputFiles.parseTTLOrNTFile(f.getPath());
-			for (String[] line : lines) {
-				add(line[0].trim(), line[1].trim(), line[2].trim());
+			try {
+				InputStream in = FileManager.get().open(f.getPath());
+				if (in == null) {
+					throw new IllegalArgumentException("File: " + f.getPath() + " not found");
+				}
+				BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(in));
+				while (bufferedReader.readLine() != null) {
+					String[] line = bufferedReader.readLine().split("\\s+");
+					add(line[0].trim(), line[1].trim(), line[2].trim());
+				}
+			} catch (Exception e) {
+				log.error("ParseInputFiles.parseTTLOrNTFileInLine parse TTL or NT error, filePath:{}", f.getPath());
 			}
 		} else {
 			for (String line : new FileLines(f, "UTF-8", message)) {
