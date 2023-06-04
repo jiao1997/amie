@@ -654,25 +654,25 @@ public class Char17 {
 	}
 
 	/** Encodes with backslash all illegal characters */
-	public static String encodeBackslash(CharSequence s, Legal legal) {
-		StringBuilder b = new StringBuilder((int) (s.length() * 1.5));
-		for (int i = 0; i < s.length(); i++) {
-			if (legal.isLegal(s.charAt(i)) && s.charAt(i) != '\\') {
-				b.append(s.charAt(i));
-			} else {
-				if (charToBackslash.containsKey(s.charAt(i))) {
-					b.append(charToBackslash.get(s.charAt(i)));
-					continue;
-				}
-				b.append("\\u");
-				String hex = Integer.toHexString(s.charAt(i));
-				for (int j = 0; j < 4 - hex.length(); j++)
-					b.append('0');
-				b.append(hex);
-			}
-		}
-		return (b.toString());
-	}
+//	public static String encodeBackslash(CharSequence s, Legal legal) {
+//		StringBuilder b = new StringBuilder((int) (s.length() * 1.5));
+//		for (int i = 0; i < s.length(); i++) {
+//			if (legal.isLegal(s.charAt(i)) && s.charAt(i) != '\\') {
+//				b.append(s.charAt(i));
+//			} else {
+//				if (charToBackslash.containsKey(s.charAt(i))) {
+//					b.append(charToBackslash.get(s.charAt(i)));
+//					continue;
+//				}
+//				b.append("\\u");
+//				String hex = Integer.toHexString(s.charAt(i));
+//				for (int j = 0; j < 4 - hex.length(); j++)
+//					b.append('0');
+//				b.append(hex);
+//			}
+//		}
+//		return (b.toString());
+//	}
 
 	/** Decodes a backslash sequence */
 	public static String decodeBackslash(String string) {
@@ -862,17 +862,17 @@ public class Char17 {
 	/**
 	 * Replaces illegal characters in the string by hex codes (cannot be undone)
 	 */
-	public static String encodeHex(String s, Legal legal) {
-		StringBuilder result = new StringBuilder();
-		for (int i = 0; i < s.length(); i++) {
-			char c = s.charAt(i);
-			if (legal.isLegal(c))
-				result.append(c);
-			else
-				result.append(Integer.toHexString(s.charAt(i)).toUpperCase());
-		}
-		return (result.toString());
-	}
+//	public static String encodeHex(String s, Legal legal) {
+//		StringBuilder result = new StringBuilder();
+//		for (int i = 0; i < s.length(); i++) {
+//			char c = s.charAt(i);
+//			if (legal.isLegal(c))
+//				result.append(c);
+//			else
+//				result.append(Integer.toHexString(s.charAt(i)).toUpperCase());
+//		}
+//		return (result.toString());
+//	}
 
 	/** Tells whether a char is in a range */
 	public static boolean in(char c, char a, char b) {
@@ -937,19 +937,19 @@ public class Char17 {
 	};
 
 	/** Any characters that can appear in HTML attributes*/
-	public static final Legal html = new Legal() {
-		public boolean isLegal(char c) {
-			return c >= ' ' && c <= '}' && !in(c, "&<>'\"");
-		}
-	};
+//	public static final Legal html = new Legal() {
+//		public boolean isLegal(char c) {
+//			return c >= ' ' && c <= '}' && !in(c, "&<>'\"");
+//		}
+//	};
 
 	/**
 	 * Encodes a char to percentage code, if it is not a path character in the
 	 * sense of URIs
 	 */
-	public static String encodeURIPathComponent(String s) {
-		return (encodePercentage(s, uriPathComponent));
-	}
+//	public static String encodeURIPathComponent(String s) {
+//		return (encodePercentage(s, uriPathComponent));
+//	}
 
 	/** TRUE for XML path components */
 	public static final Legal xmlPathComponent = new Legal() {
